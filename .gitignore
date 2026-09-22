@@ -1,0 +1,7 @@
+node_modules/
+client/dist/
+server/dist/
+.DS_Store
+coverage/
+tmp/pdfs/*.png
+tmp/pdfs/*.pdf
