@@ -1,5 +1,6 @@
 import request from "supertest";
 import { describe, expect, it } from "vitest";
+import vercelApp from "../../api/index.js";
 import { createApp } from "../src/app.js";
 
 describe("curriculum API", () => {
@@ -31,5 +32,12 @@ describe("curriculum API", () => {
 
     expect(response.status).toBe(404);
     expect(response.body.error).toBe("Topic not found");
+  });
+
+  it("exports the Express API through the Vercel entrypoint", async () => {
+    const response = await request(vercelApp).get("/api/health");
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({ ok: true });
   });
 });

@@ -29,6 +29,30 @@ npm start
 
 Then open http://localhost:3001.
 
+## Deploy on Vercel
+
+This project is ready for one Vercel project: Vite is served as static output and Express runs as one Node.js Function.
+
+1. Push this folder to GitHub, GitLab, or Bitbucket.
+2. Import the repository in Vercel.
+3. Set the project root to this folder. If this folder is inside a larger repository, choose `JS-summary-before-DB` as the Root Directory.
+4. Deploy. `vercel.json` supplies the Vite preset, build command, output directory, API rewrite, and SPA fallback.
+
+No environment variables are required. Run the same deployment build locally before pushing:
+
+```bash
+npm run build:vercel
+npm test
+```
+
+Optional CLI preview from this folder:
+
+```bash
+npx vercel@latest
+```
+
+Progress remains in `localStorage`. It is tied to the deployment origin, so preview and production URLs keep separate progress.
+
 ## Included
 
 - TypeScript + React frontend
