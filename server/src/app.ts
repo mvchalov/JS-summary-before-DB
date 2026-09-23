@@ -5,14 +5,14 @@ import { createApiRouter } from "./api.js";
 export const createApp = () => {
   const app = createApiRouter();
 
-  const clientDist = path.resolve(process.cwd(), "../client/dist");
-  app.use(express.static(clientDist));
+  const siteOutput = path.resolve(process.cwd(), "../public");
+  app.use(express.static(siteOutput));
   app.get("/{*path}", (request, response, next) => {
     if (request.path.startsWith("/api/")) {
       next();
       return;
     }
-    response.sendFile(path.join(clientDist, "index.html"), (error) => {
+    response.sendFile(path.join(siteOutput, "index.html"), (error) => {
       if (error) next(error);
     });
   });
